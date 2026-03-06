@@ -5,7 +5,7 @@ MovieStudio
 
 # 
 
-# This plan outlines the creation of the `README.md` file for the Movie Studio (Movieholic) application.
+#### This plan outlines the creation of the `README.md` file for the Movie Studio (Movieholic) application.
 
 # 
 
