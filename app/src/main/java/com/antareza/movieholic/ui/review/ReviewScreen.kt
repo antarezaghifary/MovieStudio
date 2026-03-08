@@ -1,5 +1,6 @@
 package com.antareza.movieholic.ui.review
 
+import com.antareza.movieholic.ui.components.ErrorView
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -13,7 +14,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -59,7 +59,10 @@ fun ReviewScreen(
                     }
                 }
                 is ReviewState.Error -> {
-                    Text(text = "Failed to load reviews")
+                    ErrorView(
+                        message = "Failed to load reviews",
+                        modifier = Modifier.fillMaxSize()
+                    )
                 }
                 is ReviewState.Success -> {
                     LazyColumn(

@@ -1,5 +1,6 @@
 package com.antareza.movieholic.ui.genre
 
+import com.antareza.movieholic.ui.components.ErrorView
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -59,7 +60,10 @@ fun GenreScreen(
                     )
                 }
                 is GenreState.Error -> {
-                    Text(text = genreState.message)
+                    ErrorView(
+                        message = genreState.message,
+                        modifier = Modifier.fillMaxSize()
+                    )
                 }
             }
         }

@@ -1,5 +1,6 @@
 package com.antareza.movieholic.ui.detail
 
+import com.antareza.movieholic.ui.components.ErrorView
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.Image
@@ -87,7 +88,10 @@ fun MovieDetailScreen(
                     )
                 }
                 is MovieDetailState.Error -> {
-                    Text(text = movieDetailState.message)
+                    ErrorView(
+                        message = movieDetailState.message,
+                        modifier = Modifier.fillMaxSize()
+                    )
                 }
             }
         }
@@ -219,7 +223,7 @@ fun MovieDetailContent(
             
             when (videoState) {
                 is VideoState.Loading -> CircularProgressIndicator()
-                is VideoState.Error -> Text("Failed to load videos")
+                is VideoState.Error -> ErrorView(message = "Failed to load videos")
                 is VideoState.Success -> {
                     val trailers = videoState.videos.filter { it.type == "Trailer" && it.site == "YouTube" }
                     if (trailers.isEmpty()) {
@@ -290,7 +294,7 @@ fun MovieDetailContent(
                 }
             }
             is ReviewState.Error -> {
-                item { Text("Failed to load reviews") }
+                item { ErrorView(message = "Failed to load reviews") }
             }
             is ReviewState.Success -> {
                 if (reviewState.reviews.isEmpty()) {

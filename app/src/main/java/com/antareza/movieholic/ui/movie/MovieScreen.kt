@@ -1,5 +1,6 @@
 package com.antareza.movieholic.ui.movie
 
+import com.antareza.movieholic.ui.components.ErrorView
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -158,9 +159,10 @@ fun MovieScreen(
                         }
                     }
                     is MovieState.Error -> {
-                        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                            Text(text = movieState.message, color = Color.Red)
-                        }
+                        ErrorView(
+                            message = movieState.message,
+                            modifier = Modifier.fillMaxSize()
+                        )
                     }
                 }
             }
